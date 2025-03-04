@@ -7,16 +7,13 @@ import java.time.Year;
 import javax.swing.*;
 
 public class Data {
-
-    public static int getCurYear() {
-        return curYear;
-    }
-    private int day, month, year;
-    private static Integer [] months = new Integer[12], days31 = new Integer[31], days30 = new Integer[30], days28 = new Integer[28], years = new Integer[20];
     private final static int curYear = Year.now().getValue();
+    private int day = 1, month = 1, year = curYear;
+    private static boolean filled = false;
+    private static Integer [] months = new Integer[12], days31 = new Integer[31], days30 = new Integer[30], days28 = new Integer[28], years = new Integer[20];
 
     public Data(String name, JFrame father) {
-        fillArrays();
+        if(!filled) fillArrays();
         this.initialize(name, father);
     }
 
@@ -115,7 +112,6 @@ public class Data {
             this.day = (int) dayBox.getSelectedItem();
             this.month = (int) monthBox.getSelectedItem();
             this.year = (int) yearBox.getSelectedItem();
-            System.out.println(this.day);
             dateWindowDialog.dispose();
         });
 
@@ -123,8 +119,9 @@ public class Data {
     }
 
     private static void fillArrays(){
-        int j;
-        for(j = 0; j < 12; j++){
+        filled = true;
+        int j = 0;
+        for(;j < 12; j++){
             months[j] = j+1;
             days28[j] = j+1;
             days30[j] = j+1;
