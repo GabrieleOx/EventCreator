@@ -16,9 +16,9 @@ public class Orario {
     private static boolean filled = false;
     private static Integer [] hours = new Integer[12], minsSecs = new Integer[60];
     
-    public Orario(String name, JFrame father) {
+    public Orario(String windowName, JFrame father) {
         if(!filled) fillArrays();
-        initialize(name, father);
+        initialize(windowName, father);
     }
     public int getHou() {
         return hou;

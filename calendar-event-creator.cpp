@@ -312,7 +312,7 @@ void fill(string file, string line){
 
 void menu(){
     int selec;
-    string file, base = "Subject,Start Date,Start Time,End Date,End Time,All day event,Description,Location";
+    string file, base = "Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description,Location";
     cout << "Inserire il nome che si vuole dare al file:\n";
     cin >> file;
     file += ".csv";

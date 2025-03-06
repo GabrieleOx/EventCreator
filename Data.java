@@ -12,9 +12,9 @@ public class Data {
     private static boolean filled = false;
     private static Integer [] months = new Integer[12], days31 = new Integer[31], days30 = new Integer[30], days28 = new Integer[28], years = new Integer[20];
 
-    public Data(String name, JFrame father) {
+    public Data(String windowName, JFrame father) {
         if(!filled) fillArrays();
-        this.initialize(name, father);
+        this.initialize(windowName, father);
     }
 
     public int getDay() {

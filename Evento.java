@@ -1,8 +1,23 @@
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
+
 public class Evento {
     private boolean allDay = false, singleDay = false;
     private Orario startOrario, endOrario;
     private Data startData, endData;
     private String subject, description, location;
+
+    public Evento(String windowName){
+        initialize(windowName);
+    }
 
     public String isAllDay() {
         if(this.allDay)
@@ -93,5 +108,66 @@ public class Evento {
     @Override
     public String toString() {
         return this.subject + "," + this.startData + "," + this.startOrario + "," + this.endData + "," + this.endOrario + "," + this.isAllDay() + "," + this.description + "," + this.location;
+    }
+
+    private void initialize(String name){
+        final String mod = "Modify", dat = "Data:", or = "Orario:", ye = "GG/MM/YYYY", tm = "hh:mm:ss";
+        JFrame window = new JFrame(name);
+        JLabel titleLabel = new JLabel("Event Creator:"), startLabel = new JLabel("Start:"), endLabel = new JLabel("End:"), startDateLabel = new JLabel(dat), startTimeLabel = new JLabel(or), endDateLabel = new JLabel(dat),
+            endTimeLabel = new JLabel(or), subjectLabel = new JLabel("Soggetto:"), descriptionLabel = new JLabel("Descrizione:"), locationLabel = new JLabel("Location:");
+        JTextField startDateTextField = new JTextField(ye), startTimeTextField = new JTextField(tm), endDateTextField = new JTextField(ye), endTimeTextField = new JTextField(tm), subjectTextField = new JTextField(), descriptionTextField = new JTextField(), locationTextField = new JTextField();
+        JButton startDateButton = new JButton(mod), startTimeButton = new JButton(mod), endDateButton = new JButton(mod), endTimeButton = new JButton(mod), sendButton = new JButton("Crea");
+        JCheckBox singleDayCheckBox = new JCheckBox("Single Day"), allDayCheckBox = new JCheckBox("All Day"), privateCheckBox = new JCheckBox("Private");
+        JPanel startDatePanel = new JPanel(), startTimePanel = new JPanel(), endDatePanel = new JPanel(), endTimePanel = new JPanel(), subjectPanel = new JPanel(), descriptionPanel = new JPanel(), locationPanel = new JPanel();
+
+        //Grafical part
+
+        window.setSize(900, 900);
+        window.getContentPane().setBackground(new Color(237, 220, 26));
+        window.setResizable(false);
+        window.setLayout(null);
+        window.add(titleLabel); window.add(startLabel); window.add(startDatePanel); window.add(startDateButton); window.add(startTimePanel); window.add(startTimeButton); window.add(singleDayCheckBox);
+
+        titleLabel.setBounds(320, 20, 220, 50);
+        titleLabel.setFont(new Font("Verdana", Font.BOLD, 25));
+
+        //First col:
+        startLabel.setBounds(50, 90, 100, 40);
+        startLabel.setFont(new Font("Verdana", Font.BOLD, 20));
+
+        startDatePanel.setBounds(20, 180, 140, 80);
+        startDatePanel.setLayout(new GridLayout(0, 1));
+        startDatePanel.setBackground(null);
+        startDateLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
+        startDateTextField.setFont(new Font("Verdana", Font.PLAIN, 16));
+        startDateTextField.setEditable(false);
+        startDatePanel.add(startDateLabel); startDatePanel.add(startDateTextField);
+
+        startDateButton.setBounds(35, 280, 100, 40);
+        startDateButton.setFont(new Font("Verdana", Font.BOLD, 15));
+        startDateButton.setBackground(new Color(198, 131, 230));
+
+        startTimePanel.setBounds(20, 360, 140, 80);
+        startTimePanel.setLayout(new GridLayout(0, 1));
+        startTimePanel.setBackground(null);
+        startTimeLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
+        startTimeTextField.setFont(new Font("Verdana", Font.PLAIN, 16));
+        startTimeTextField.setEditable(false);
+        startTimePanel.add(startTimeLabel); startTimePanel.add(startTimeTextField);
+
+        startTimeButton.setBounds(35, 460, 100, 40);
+        startTimeButton.setFont(new Font("Verdana", Font.BOLD, 15));
+        startTimeButton.setBackground(new Color(198, 131, 230));
+
+        singleDayCheckBox.setBounds(20, 540, 180, 50);
+        singleDayCheckBox.setFont(new Font("Verdana", Font.PLAIN, 20));
+        singleDayCheckBox.setBackground(null);
+
+        //Second col:
+
+        //Action part
+
+        window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        window.setVisible(true);
     }
 }
