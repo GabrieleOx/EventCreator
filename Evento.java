@@ -134,15 +134,16 @@ public class Evento {
 
         //Grafical part
 
-        window.setSize(900, 900);
+        window.setSize(760, 650);
         window.getContentPane().setBackground(new Color(237, 220, 26));
         window.setResizable(false);
         window.setLayout(null);
         window.add(titleLabel);
         window.add(startLabel); window.add(startDatePanel); window.add(startDateButton); window.add(startTimePanel); window.add(startTimeButton); window.add(singleDayCheckBox);
         window.add(subjectPanel); window.add(descriptionPanel); window.add(locationPanel); window.add(allDayCheckBox);
+        window.add(endLabel); window.add(endDatePanel); window.add(endDateButton); window.add(endTimePanel); window.add(endTimeButton); window.add(privateCheckBox);
 
-        titleLabel.setBounds(320, 20, 220, 50);
+        titleLabel.setBounds(270, 20, 220, 50);
         titleLabel.setFont(new Font("Verdana", Font.BOLD, 25));
 
         //First col:
@@ -199,15 +200,15 @@ public class Evento {
         locationTextField.setFont(new Font("Verdana", Font.PLAIN, 16));
         locationPanel.add(locationLabel); locationPanel.add(locationTextField);
 
-        allDayCheckBox.setBounds(280, 540, 180, 50);
+        allDayCheckBox.setBounds(310, 540, 180, 50);
         allDayCheckBox.setFont(new Font("Verdana", Font.PLAIN, 20));
         allDayCheckBox.setBackground(null);
 
         //Third col:
-        endLabel.setBounds(50, 90, 100, 40);
+        endLabel.setBounds(620, 90, 100, 40);
         endLabel.setFont(new Font("Verdana", Font.BOLD, 20));
 
-        endDatePanel.setBounds(20, 180, 140, 80);
+        endDatePanel.setBounds(580, 180, 140, 80);
         endDatePanel.setLayout(new GridLayout(0, 1));
         endDatePanel.setBackground(null);
         endDateLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
@@ -215,11 +216,11 @@ public class Evento {
         endDateTextField.setEditable(false);
         endDatePanel.add(endDateLabel); endDatePanel.add(endDateTextField);
 
-        endDateButton.setBounds(35, 280, 100, 40);
+        endDateButton.setBounds(595, 280, 100, 40);
         endDateButton.setFont(new Font("Verdana", Font.BOLD, 15));
         endDateButton.setBackground(new Color(198, 131, 230));
 
-        endTimePanel.setBounds(20, 360, 140, 80);
+        endTimePanel.setBounds(580, 360, 140, 80);
         endTimePanel.setLayout(new GridLayout(0, 1));
         endTimePanel.setBackground(null);
         endTimeLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
@@ -227,11 +228,11 @@ public class Evento {
         endTimeTextField.setEditable(false);
         endTimePanel.add(endTimeLabel); endTimePanel.add(endTimeTextField);
 
-        endTimeButton.setBounds(35, 460, 100, 40);
+        endTimeButton.setBounds(595, 460, 100, 40);
         endTimeButton.setFont(new Font("Verdana", Font.BOLD, 15));
         endTimeButton.setBackground(new Color(198, 131, 230));
 
-        privateCheckBox.setBounds(20, 540, 180, 50);
+        privateCheckBox.setBounds(600, 540, 180, 50);
         privateCheckBox.setFont(new Font("Verdana", Font.PLAIN, 20));
         privateCheckBox.setBackground(null);
 
