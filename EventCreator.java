@@ -1,6 +1,8 @@
+
+import javax.swing.JFrame;
+
 public class EventCreator {
     public static void main(String[] args) {
-        new Evento("Evento", null);
-        System.out.println("ciao");
+        JFrame baseWindow = new JFrame("EventCreator");
     }
 }
