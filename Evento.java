@@ -3,11 +3,11 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.WindowConstants;
 
 public class Evento {
     private boolean allDay = false, singleDay = false, privateEvent = false;
@@ -15,8 +15,8 @@ public class Evento {
     private Data startData, endData;
     private String subject, description, location;
 
-    public Evento(String windowName){
-        initialize(windowName);
+    public Evento(String windowName, JFrame father){
+        initialize(windowName, father);
     }
 
     public String isPrivateEvent() {
@@ -122,9 +122,9 @@ public class Evento {
         return this.subject + "," + this.startData + "," + this.startOrario + "," + this.endData + "," + this.endOrario + "," + this.isAllDay() + "," + this.description + "," + this.location + "," + this.isPrivateEvent();
     }
 
-    private void initialize(String name){
+    private void initialize(String name, JFrame padre){
         final String mod = "Modify", dat = "Data:", or = "Orario:", ye = "GG/MM/YYYY", tm = "hh:mm:ss";
-        JFrame window = new JFrame(name);
+        JDialog window = new JDialog(padre, name, true);
         JLabel titleLabel = new JLabel("Event Creator:"), startLabel = new JLabel("Start:"), endLabel = new JLabel("End:"), startDateLabel = new JLabel(dat), startTimeLabel = new JLabel(or), endDateLabel = new JLabel(dat),
             endTimeLabel = new JLabel(or), subjectLabel = new JLabel("Soggetto:"), descriptionLabel = new JLabel("Descrizione:"), locationLabel = new JLabel("Location:"),
             startDateErrorLabel = new JLabel("Devi inserire una data valida!!"), startTimeErrorLabel = new JLabel("Devi inserire un'orario valido!!"), endDateErrorLabel = new JLabel("Devi inserire una data valida!!"),
@@ -368,10 +368,10 @@ public class Evento {
                 this.subject = subjectTextField.getText();
                 this.description = descriptionTextField.getText();
                 this.location = locationTextField.getText();
+                window.dispose();
             }
         });
 
-        window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setVisible(true);
     }
 }

@@ -12,7 +12,7 @@ public class Data {
     private static boolean filled = false;
     private static Integer [] months = new Integer[12], days31 = new Integer[31], days30 = new Integer[30], days28 = new Integer[28], years = new Integer[20];
 
-    public Data(String windowName, JFrame father) {
+    public Data(String windowName, JDialog father) {
         if(!filled) fillArrays();
         this.initialize(windowName, father);
     }
@@ -46,7 +46,7 @@ public class Data {
         return this.month + "/" + this.day + "/" + this.year;
     }
 
-    private void initialize(String name, JFrame father){
+    private void initialize(String name, JDialog father){
         JDialog dateWindowDialog = new JDialog(father, name, true);
         JComboBox yearBox = new JComboBox<>(years), monthBox = new JComboBox<>(months), dayBox = new JComboBox<>(days31);
         JLabel dayJLabel = new JLabel("   Giorno:"), monthJLabel = new JLabel("    Mese:"), yearJLabel = new JLabel("    Anno:"), titleJLabel = new JLabel("Inserimento data:");

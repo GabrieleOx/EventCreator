@@ -6,7 +6,6 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -16,7 +15,7 @@ public class Orario {
     private static boolean filled = false;
     private static Integer [] hours = new Integer[12], minsSecs = new Integer[60];
     
-    public Orario(String windowName, JFrame father) {
+    public Orario(String windowName, JDialog father) {
         if(!filled) fillArrays();
         initialize(windowName, father);
     }
@@ -52,7 +51,7 @@ public class Orario {
         return this.hou + ":" + this.min + ":" + this.sec + " " + this.isAm();
     }
 
-    private void initialize(String name, JFrame father){
+    private void initialize(String name, JDialog father){
         JDialog timeWindowDialog = new JDialog(father, name, true);
         JComboBox hourBox = new JComboBox<>(hours), minuteBox = new JComboBox<>(minsSecs), secondBox = new JComboBox<>(minsSecs);
         JLabel secondJLabel = new JLabel(" Secondo:"), minuteJLabel = new JLabel("   Minuto:"), hourJLabel = new JLabel("     Ora:"), titleJLabel = new JLabel("Inserimento orario:");
