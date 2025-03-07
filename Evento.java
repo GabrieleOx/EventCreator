@@ -10,13 +10,23 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class Evento {
-    private boolean allDay = false, singleDay = false;
+    private boolean allDay = false, singleDay = false, privateEvent = false;
     private Orario startOrario, endOrario;
     private Data startData, endData;
     private String subject, description, location;
 
     public Evento(String windowName){
         initialize(windowName);
+    }
+
+    public String isPrivateEvent() {
+        if(this.privateEvent)
+            return "TRUE";
+        else return "FALSE";
+    }
+
+    public void setPrivateEvent(boolean privateEvent) {
+        this.privateEvent = privateEvent;
     }
 
     public String isAllDay() {
@@ -29,8 +39,10 @@ public class Evento {
         this.allDay = allDay;
     }
 
-    public boolean isSingleDay() {
-        return singleDay;
+    public String isSingleDay() {
+        if(this.singleDay)
+            return "TRUE";
+        else return "FALSE";
     }
 
     public void setSingleDay(boolean singleDay) {
@@ -107,7 +119,7 @@ public class Evento {
 
     @Override
     public String toString() {
-        return this.subject + "," + this.startData + "," + this.startOrario + "," + this.endData + "," + this.endOrario + "," + this.isAllDay() + "," + this.description + "," + this.location;
+        return this.subject + "," + this.startData + "," + this.startOrario + "," + this.endData + "," + this.endOrario + "," + this.isAllDay() + "," + this.description + "," + this.location + "," + this.isPrivateEvent();
     }
 
     private void initialize(String name){
@@ -126,7 +138,9 @@ public class Evento {
         window.getContentPane().setBackground(new Color(237, 220, 26));
         window.setResizable(false);
         window.setLayout(null);
-        window.add(titleLabel); window.add(startLabel); window.add(startDatePanel); window.add(startDateButton); window.add(startTimePanel); window.add(startTimeButton); window.add(singleDayCheckBox);
+        window.add(titleLabel);
+        window.add(startLabel); window.add(startDatePanel); window.add(startDateButton); window.add(startTimePanel); window.add(startTimeButton); window.add(singleDayCheckBox);
+        window.add(subjectPanel); window.add(descriptionPanel); window.add(locationPanel); window.add(allDayCheckBox);
 
         titleLabel.setBounds(320, 20, 220, 50);
         titleLabel.setFont(new Font("Verdana", Font.BOLD, 25));
@@ -164,6 +178,62 @@ public class Evento {
         singleDayCheckBox.setBackground(null);
 
         //Second col:
+        subjectPanel.setBounds(280, 180, 180, 80);
+        subjectPanel.setLayout(new GridLayout(0, 1));
+        subjectPanel.setBackground(null);
+        subjectLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
+        subjectTextField.setFont(new Font("Verdana", Font.PLAIN, 16));
+        subjectPanel.add(subjectLabel); subjectPanel.add(subjectTextField);
+
+        descriptionPanel.setBounds(280, 280, 180, 80);
+        descriptionPanel.setLayout(new GridLayout(0, 1));
+        descriptionPanel.setBackground(null);
+        descriptionLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
+        descriptionTextField.setFont(new Font("Verdana", Font.PLAIN, 16));
+        descriptionPanel.add(descriptionLabel); descriptionPanel.add(descriptionTextField);
+
+        locationPanel.setBounds(280, 380, 180, 80);
+        locationPanel.setLayout(new GridLayout(0, 1));
+        locationPanel.setBackground(null);
+        locationLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
+        locationTextField.setFont(new Font("Verdana", Font.PLAIN, 16));
+        locationPanel.add(locationLabel); locationPanel.add(locationTextField);
+
+        allDayCheckBox.setBounds(280, 540, 180, 50);
+        allDayCheckBox.setFont(new Font("Verdana", Font.PLAIN, 20));
+        allDayCheckBox.setBackground(null);
+
+        //Third col:
+        endLabel.setBounds(50, 90, 100, 40);
+        endLabel.setFont(new Font("Verdana", Font.BOLD, 20));
+
+        endDatePanel.setBounds(20, 180, 140, 80);
+        endDatePanel.setLayout(new GridLayout(0, 1));
+        endDatePanel.setBackground(null);
+        endDateLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
+        endDateTextField.setFont(new Font("Verdana", Font.PLAIN, 16));
+        endDateTextField.setEditable(false);
+        endDatePanel.add(endDateLabel); endDatePanel.add(endDateTextField);
+
+        endDateButton.setBounds(35, 280, 100, 40);
+        endDateButton.setFont(new Font("Verdana", Font.BOLD, 15));
+        endDateButton.setBackground(new Color(198, 131, 230));
+
+        endTimePanel.setBounds(20, 360, 140, 80);
+        endTimePanel.setLayout(new GridLayout(0, 1));
+        endTimePanel.setBackground(null);
+        endTimeLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
+        endTimeTextField.setFont(new Font("Verdana", Font.PLAIN, 16));
+        endTimeTextField.setEditable(false);
+        endTimePanel.add(endTimeLabel); endTimePanel.add(endTimeTextField);
+
+        endTimeButton.setBounds(35, 460, 100, 40);
+        endTimeButton.setFont(new Font("Verdana", Font.BOLD, 15));
+        endTimeButton.setBackground(new Color(198, 131, 230));
+
+        privateCheckBox.setBounds(20, 540, 180, 50);
+        privateCheckBox.setFont(new Font("Verdana", Font.PLAIN, 20));
+        privateCheckBox.setBackground(null);
 
         //Action part
 
