@@ -43,6 +43,7 @@ int limit(int month){
         case 11: return 30;
         case 12: return 31;
     }
+    return 0;
 }
 
 int curYear(){
@@ -376,6 +377,6 @@ void menu(){
     } while(selec != 4);
 }
 
-main(void){
+int main(void){
     menu();
 }
