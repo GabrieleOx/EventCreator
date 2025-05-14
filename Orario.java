@@ -48,7 +48,13 @@ public class Orario {
 
     @Override
     public String toString() {
-        return this.hou + ":" + this.min + ":" + this.sec + " " + this.isAm();
+        if(this.min == 0 && this.sec != 0)
+            return this.hou + ":00:" + this.sec + " " + this.isAm();
+        else if(this.min != 0 && this.sec == 0)
+            return this.hou + ":" + this.min + ":00 " + this.isAm();
+        else if(this.min == 0 && this.sec == 0)
+            return this.hou + ":00:00 " + this.isAm();
+        else return this.hou + ":" + this.min + ":" + this.sec + " " + this.isAm();
     }
 
     private void initialize(String name, JDialog father){
