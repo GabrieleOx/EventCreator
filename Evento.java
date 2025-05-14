@@ -119,7 +119,7 @@ public class Evento {
 
     @Override
     public String toString() {
-        return this.subject + "," + this.startData + "," + this.startOrario + "," + this.endData + "," + this.endOrario + "," + this.isAllDay() + "," + this.description + "," + this.location + "," + this.isPrivateEvent();
+        return this.subject + "," + this.startData + "," + this.startOrario + "," + this.endData + "," + this.endOrario + "," + this.isAllDay() + "," + this.description + "," + this.location + "," + this.isPrivateEvent() + "\n";
     }
 
     private void initialize(String name, JFrame padre){
@@ -335,16 +335,37 @@ public class Evento {
             if(subjectTextField.getText().isBlank()){
                 go = false;
                 subjectErrorLabel.setVisible(true);
+            }else {
+                String txt = subjectTextField.getText().trim(), nw = "";
+                int len = txt.length();
+                for(int i = 0; i < len; i++)
+                    if(txt.charAt(i) != ',')
+                        nw += txt.charAt(i);
+                subjectTextField.setText(nw);
             }
 
             if(descriptionTextField.getText().isBlank()){
                 go = false;
                 descriptionErrorLabel.setVisible(true);
+            }else {
+                String txt = descriptionTextField.getText().trim(), nw = "";
+                int len = txt.length();
+                for(int i = 0; i < len; i++)
+                    if(txt.charAt(i) != ',')
+                        nw += txt.charAt(i);
+                descriptionTextField.setText(nw);
             }
 
             if(locationTextField.getText().isBlank()){
                 go = false;
                 locationErrorLabel.setVisible(true);
+            }else {
+                String txt = locationTextField.getText().trim(), nw = "";
+                int len = txt.length();
+                for(int i = 0; i < len; i++)
+                    if(txt.charAt(i) != ',')
+                        nw += txt.charAt(i);
+                locationTextField.setText(nw);
             }
 
             if(endDateTextField.getText().equals(ye)){

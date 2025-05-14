@@ -13,7 +13,7 @@ public class Orario {
     private int hou = 0, min = 0, sec = 0;
     private boolean am = true;
     private static boolean filled = false;
-    private static Integer [] hours = new Integer[12], minsSecs = new Integer[59];
+    private static Integer [] hours = new Integer[12], minsSecs = new Integer[60];
     
     public Orario(String windowName, JDialog father) {
         if(!filled) fillArrays();
@@ -116,10 +116,10 @@ public class Orario {
         int i = 0;
         for(;i < 12; i++){
             hours[i] = i+1;
-            minsSecs[i] = i+1;
+            minsSecs[i] = i;
         }
 
-        for(;i < 59; i++)
-            minsSecs[i] = i+1;
+        for(;i < 60; i++)
+            minsSecs[i] = i;
     }
 }

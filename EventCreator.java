@@ -1,17 +1,22 @@
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class EventCreator {
     public static void main(String[] args) {
+        final String fileHeader = "Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description,Location,Private\n";
         ArrayList<Evento> events = new ArrayList<>();
         final Integer [] nEvents = new Integer[20];
 
@@ -113,7 +118,29 @@ public class EventCreator {
         });
 
         endButton.addActionListener(ActionListener -> {
-            //Stampa su file
+            if(events.isEmpty())
+                JOptionPane.showMessageDialog(baseWindow, "Inserisci almeno un evento!!!");
+            else{
+                File fileStampato = new File(nomeFileTextField.getText() + ".csv");
+                try {
+                    if(!fileStampato.createNewFile())
+                        JOptionPane.showMessageDialog(baseWindow, "Unable to create new file...");
+                    else{
+                        FileWriter print = new FileWriter(fileStampato);
+                        print.write(fileHeader);
+                        print.flush();
+                        for(Evento e : events){
+                            print.write(e.toString());
+                            print.flush();
+                        }
+                        print.close();
+                            
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                baseWindow.dispose();
+            }
         });
 
         baseWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
